@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     
     function displayButtons () {
+        $("#display-buttons").empty();
+
         for (let i = 0; i <avatarChars.length; i++) {
             let newBtn = $("<button>");
             newBtn.addClass("character");
@@ -20,7 +22,17 @@ $(document).ready(function () {
     displayButtons();
     
 
-    
+    $("#add-char").on("click", function(event) {
+        event.preventDefault();
+
+        let newChar = $("#new-char-input").val();
+        avatarChars.push(newChar);
+        
+        displayButtons();
+        
+
+
+    })
     
 
 
