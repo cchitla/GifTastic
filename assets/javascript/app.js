@@ -34,31 +34,33 @@ $(document).ready(function () {
 
 
     $(".character").on("click", function(event){
-        console.log("char button clicked");
-        displayGifs();
-        
+        let charName = $(this).attr("data-char-name");
+
+        const apiKey = "yGhQanruWc9yqqX5SK0T46I5F1oxABkW";
+        const queryURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${charName}&limit=10`
+    
+    
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+        }).then(function(response){
+            $("#display-gifs").empty();
+
+            let gifs = response.data;
+            
+            for (let i = 0; i < gifs.length; i++) {
+                let newGif = $("<img>")
+                newGif.attr("src", gifs[i].images.fixed_width.url);
+                $("#display-gifs").append(newGif);
+            }
+
+        }, function(error){
+            console.error(error);
+            
+        });
     })
     
 
-    function displayGifs () {
-    let charName = $(this).attr("data-char-name");
-
-    const apiKey = "yGhQanruWc9yqqX5SK0T46I5F1oxABkW";
-    const queryURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${charName}&limit=10`
-
-
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-    }).then(function(response){
-        console.log(response);
-        
-    }, function(error){
-        console.error(error);
-        
-    });
-
-    };
 
 
 
