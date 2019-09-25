@@ -7,13 +7,11 @@ $(document).ready(function () {
 
         for (let i = 0; i < avatarChars.length; i++) {
             let newBtn = $("<button>");
-            newBtn.addClass("character");
             newBtn.attr("data-char-name", avatarChars[i]);
             newBtn.text(avatarChars[i]);
             $("#display-buttons").append(newBtn);
-
-        }
-    }
+        };
+    };
 
     displayButtons();
 
@@ -27,8 +25,7 @@ $(document).ready(function () {
         displayButtons();
     });
 
-
-    $(".character").on("click", function (event) {
+    $("#display-buttons").on("click", "button", function () {
         let charName = $(this).attr("data-char-name");
 
         const apiKey = "yGhQanruWc9yqqX5SK0T46I5F1oxABkW";
