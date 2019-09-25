@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let avatarChars = ["Aang", "Katara", "Sokka", "Zuko", "Iroh", "Toph"];
+    let avatarChars = ["Aang", "Katara", "Sokka", "Zuko", "Uncle Iroh", "Appa"];
 
 
     function displayButtons() {
@@ -9,6 +9,7 @@ $(document).ready(function () {
             let newBtn = $("<button>");
             newBtn.attr("data-char-name", avatarChars[i]);
             newBtn.text(avatarChars[i]);
+            newBtn.addClass("m-2");
             $("#display-buttons").append(newBtn);
         };
     };
@@ -27,9 +28,9 @@ $(document).ready(function () {
 
     $("#display-buttons").on("click", "button", function () {
         let charName = $(this).attr("data-char-name");
-
+        let searchTerm = `Avatar ${charName}`
         const apiKey = "yGhQanruWc9yqqX5SK0T46I5F1oxABkW";
-        const queryURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${charName}&limit=10`;
+        const queryURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=10`;
 
         $.ajax({
             url: queryURL,

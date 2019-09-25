@@ -1,4 +1,12 @@
-.buttons {
-    background-color: blue;
-    min-height: 80px;
+@font-face {
+    font-family: "Herculanum";
+    src: url(../fonts/Herculanum.ttf);
+}
+
+body {
+    font-family: "Herculanum";
+}
+
+.header {
+    font-size: 2em;
 }
