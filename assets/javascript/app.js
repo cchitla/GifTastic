@@ -24,6 +24,7 @@ $(document).ready(function () {
         avatarChars.push(newChar);
 
         displayButtons();
+        $("#new-char-input").val("");
     });
 
     $("#display-buttons").on("click", "button", function () {
@@ -44,13 +45,14 @@ $(document).ready(function () {
 
             for (let i = 0; i < gifs.length; i++) {
                 let newGif = $("<img>");
-                newGif.addClass("returned-gif");
+                newGif.addClass("returned-gif m-2");
 
                 newGif.attr("data-still", gifs[i].images.fixed_width_still.url);
                 newGif.attr("data-play", gifs[i].images.fixed_width.url);
                 newGif.attr("data-state", "still");
                 
                 newGif.attr("src", gifs[i].images.fixed_width_still.url);
+                newGif.css("border", "2px solid black");
                 $("#display-gifs").append(newGif);
             };
 
